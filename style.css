@@ -1,0 +1,33 @@
+video {
+    width: 48%;
+    margin: 1%;
+    border: 1px solid black;
+}
+#webcam2 {
+    /* width: 3%;
+    margin: 1%;
+    border: 1px solid black; */
+    /* display: none; */
+}
+.botones{
+    display: flex ;
+    width: 100%;
+    /* border: 2px solid red; */
+    justify-content: space-around;
+    margin-top: 5%;
+}
+.boton{
+    width: 25%;
+    padding: 1%;
+    border: none;
+    border-radius: 5px;
+}
+.boton1{
+    background-color: red;
+}
+.boton2{
+    background-color: green;
+}
+.boton3{
+    background-color: blue;
+}
