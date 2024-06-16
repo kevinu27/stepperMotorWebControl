@@ -55,17 +55,32 @@ async function boton1() {
                 try {
                     port = await navigator.serial.requestPort();
                     await port.open({ baudRate: 9600 });
-
+          
                     const encoder = new TextEncoderStream();
                     writer = encoder.writable.getWriter();
                     encoder.readable.pipeTo(port.writable);
+          
+                    const decoder = new TextDecoderStream();
+                    reader = decoder.readable.getReader();
+                    port.readable.pipeTo(decoder.writable);
+          
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) {
+                          console.log('Reader cerrado');
+                          reader.releaseLock();
+                          break;
+                        }
+                        console.log('Datos recibidos: ', value);
+                      //   document.getElementById('output').textContent += value + '\n';
+                      }
                 } catch (error) {
                     console.error('Error al conectar con el puerto serial: ', error);
                 }
         } if (port && writer) {
     try {
     await writer.write(data);
-    console.log('Cadena enviada: ');
+    console.log('Cadena enviada: ', data);
         } catch (error) {
         console.error('Error al enviar la cadena: ', error);
         }
@@ -83,17 +98,32 @@ async function boton2() {
             try {
                 port = await navigator.serial.requestPort();
                 await port.open({ baudRate: 9600 });
-
+      
                 const encoder = new TextEncoderStream();
                 writer = encoder.writable.getWriter();
                 encoder.readable.pipeTo(port.writable);
+      
+                const decoder = new TextDecoderStream();
+                reader = decoder.readable.getReader();
+                port.readable.pipeTo(decoder.writable);
+      
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) {
+                      console.log('Reader cerrado');
+                      reader.releaseLock();
+                      break;
+                    }
+                    console.log('Datos recibidos: ', value);
+                  //   document.getElementById('output').textContent += value + '\n';
+                  }
             } catch (error) {
                 console.error('Error al conectar con el puerto serial: ', error);
             }
     } if (port && writer) {
 try {
   await writer.write(data);
-  console.log('Cadena enviada: ');
+  console.log('Cadena enviada: ', data);
 } catch (error) {
   console.error('Error al enviar la cadena: ', error);
 }
@@ -110,20 +140,48 @@ async function boton3() {
         try {
             port = await navigator.serial.requestPort();
             await port.open({ baudRate: 9600 });
-
+  
             const encoder = new TextEncoderStream();
             writer = encoder.writable.getWriter();
             encoder.readable.pipeTo(port.writable);
+  
+            const decoder = new TextDecoderStream();
+            reader = decoder.readable.getReader();
+            port.readable.pipeTo(decoder.writable);
+  
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) {
+                  console.log('Reader cerrado');
+                  reader.releaseLock();
+                  break;
+                }
+                console.log('Datos recibidos: ', value);
+              //   document.getElementById('output').textContent += value + '\n';
+              }
         } catch (error) {
             console.error('Error al conectar con el puerto serial: ', error);
         }
 } if (port && writer) {
 try {
 await writer.write(data);
-console.log('Cadena enviada: ');
+console.log('Cadena enviada: ', data);
 } catch (error) {
 console.error('Error al enviar la cadena: ', error);
 }
 }
+
+async function readSerial() {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) {
+        console.log('Reader cerrado');
+        reader.releaseLock();
+        break;
+      }
+      console.log('Datos recibidos: ', value);
+    //   document.getElementById('output').textContent += value + '\n';
+    }
+  }
 
     }
