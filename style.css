@@ -24,10 +24,26 @@ video {
 }
 .boton1{
     background-color: red;
+    width: 60%;
+    color: white;
+
 }
 .boton2{
     background-color: green;
+    width: 60%;
+    color: white;
+
 }
 .boton3{
     background-color: blue;
+    color: white;
+    width: 60%;
+    /* height: 25%; */
+}
+
+.boton-holder{
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
