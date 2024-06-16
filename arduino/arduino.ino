@@ -3,6 +3,7 @@ bool boolVar3;
 String var1; 
 String var2; 
 String var3; 
+String var4; 
 
 void setup() {
   Serial.begin(9600); // Inicia la comunicación serial a 9600 bps
@@ -22,15 +23,20 @@ void loop() {
     // Divide la cadena en partes
     int commaIndex1 = received.indexOf(',');
     int commaIndex2 = received.indexOf(',', commaIndex1 + 1);
+    int commaIndex3 = received.indexOf(',', commaIndex2 + 1);
     
 
 //    if (commaIndex1 > 0 && commaIndex2 > commaIndex1) {
        var1 = received.substring(0, commaIndex1);
        var2 = received.substring(commaIndex1 + 1, commaIndex2);
-       var3 = received.substring(commaIndex2 + 1);
+       var3 = received.substring(commaIndex2 + 1, commaIndex3);
+       var4 = received.substring(commaIndex3 + 1);
+       int var4Int = var4.toInt();
+       
       Serial.println(var1);
       Serial.println(var2);
       Serial.println(var3);
+      Serial.println(var4);
       boolVar2 = (var2 == "true");
       boolVar3 = (var3 == "true");
 
@@ -63,6 +69,11 @@ void loop() {
         digitalWrite(2, LOW);
         Serial.println("3f");
       }
-//    }
+      
+      if (var4Int < 10) {
+        Serial.println("<10");
+      } else {
+        Serial.println(">10");
+      }
   }
 }
