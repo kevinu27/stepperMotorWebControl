@@ -1,7 +1,7 @@
-bool boolVar2;
+bool boolPull;
 bool boolVar3;
 String var1; 
-String var2; 
+String pull; 
 String var3; 
 String var4; 
 
@@ -13,6 +13,7 @@ void setup() {
   pinMode(3, OUTPUT);
   digitalWrite(1, LOW);
   digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
 }
 
 void loop() {
@@ -28,16 +29,16 @@ void loop() {
 
 //    if (commaIndex1 > 0 && commaIndex2 > commaIndex1) {
        var1 = received.substring(0, commaIndex1);
-       var2 = received.substring(commaIndex1 + 1, commaIndex2);
+       pull = received.substring(commaIndex1 + 1, commaIndex2);
        var3 = received.substring(commaIndex2 + 1, commaIndex3);
        var4 = received.substring(commaIndex3 + 1);
        int var4Int = var4.toInt();
        
       Serial.println(var1);
-      Serial.println(var2);
+      Serial.println(pull);
       Serial.println(var3);
       Serial.println(var4);
-      boolVar2 = (var2 == "true");
+      boolPull = (pull == "true");
       boolVar3 = (var3 == "true");
 
       // Ejemplo de acción basada en la variable 1
@@ -50,7 +51,7 @@ void loop() {
       }
 
       // Puedes añadir más acciones basadas en boolVar2 y boolVar3 aquí
-      if (boolVar2) {
+      if (boolPull) {
         // Acción cuando var2 es true
          digitalWrite(1, HIGH);
          Serial.println("2t");
@@ -70,8 +71,16 @@ void loop() {
         Serial.println("3f");
       }
       
-      if (var4Int < 10) {
-        Serial.println("<10");
+      if (var4Int != 0 ) {
+        int currentSteps = 0;
+        while(currentSteps < var4Int){
+          currentSteps = currentSteps +1;
+          digitalWrite(3, LOW);
+          delay(100);
+          digitalWrite(3, HIGH);
+          delay(100);
+          }
+        
       } else {
         Serial.println(">10");
       }
