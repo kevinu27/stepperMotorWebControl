@@ -63,28 +63,28 @@ async function boton1() {
                     const decoder = new TextDecoderStream();
                     reader = decoder.readable.getReader();
                     port.readable.pipeTo(decoder.writable);
-          
-                    while (true) {
-                        const { value, done } = await reader.read();
-                        if (done) {
-                          console.log('Reader cerrado');
-                          reader.releaseLock();
-                          break;
+                    
+                    readSerial()
+                    } catch (error) {
+                        console.error('Error al conectar con el puerto serial: ', error);
                         }
-                        console.log('Datos recibidos: ', value);
-                      //   document.getElementById('output').textContent += value + '\n';
-                      }
-                } catch (error) {
-                    console.error('Error al conectar con el puerto serial: ', error);
+                        } if (port && writer) {
+                            try {
+                                await writer.write(data);
+                                console.log('Cadena enviada: ', data);
+                                } catch (error) {
+                                    console.error('Error al enviar la cadena: ', error);
+                                    }
+                                    }
+                //   document.getElementById('output').textContent += value + '\n';
+                
+                let elemento = document.getElementById('boton1');
+                if(en) {
+                    elemento.style.backgroundColor = 'red';
+                }else{
+                    elemento.style.backgroundColor = 'rgba(255, 0, 0, 0.500)';
                 }
-        } if (port && writer) {
-    try {
-    await writer.write(data);
-    console.log('Cadena enviada: ', data);
-        } catch (error) {
-        console.error('Error al enviar la cadena: ', error);
-        }
-    }
+                console.log('elemento', elemento)
 }
 
 async function boton2() {
@@ -107,16 +107,7 @@ async function boton2() {
                 reader = decoder.readable.getReader();
                 port.readable.pipeTo(decoder.writable);
       
-                while (true) {
-                    const { value, done } = await reader.read();
-                    if (done) {
-                      console.log('Reader cerrado');
-                      reader.releaseLock();
-                      break;
-                    }
-                    console.log('Datos recibidos: ', value);
-                  //   document.getElementById('output').textContent += value + '\n';
-                  }
+                readSerial()
             } catch (error) {
                 console.error('Error al conectar con el puerto serial: ', error);
             }
@@ -128,6 +119,13 @@ try {
   console.error('Error al enviar la cadena: ', error);
 }
 }
+        let elemento = document.getElementById('boton2');
+        if(dir) {
+            elemento.style.backgroundColor = 'green';
+        }else{
+            elemento.style.backgroundColor = 'rgba(0, 128, 0, 0.500)';
+        }
+        console.log('elemento', elemento)
     }
 
 async function boton3() {
@@ -149,39 +147,39 @@ async function boton3() {
             reader = decoder.readable.getReader();
             port.readable.pipeTo(decoder.writable);
   
-            while (true) {
-                const { value, done } = await reader.read();
-                if (done) {
-                  console.log('Reader cerrado');
-                  reader.releaseLock();
-                  break;
-                }
-                console.log('Datos recibidos: ', value);
-              //   document.getElementById('output').textContent += value + '\n';
-              }
+            readSerial()
         } catch (error) {
             console.error('Error al conectar con el puerto serial: ', error);
         }
-} if (port && writer) {
-try {
-await writer.write(data);
-console.log('Cadena enviada: ', data);
-} catch (error) {
-console.error('Error al enviar la cadena: ', error);
-}
-}
-
-async function readSerial() {
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) {
-        console.log('Reader cerrado');
-        reader.releaseLock();
-        break;
-      }
-      console.log('Datos recibidos: ', value);
-    //   document.getElementById('output').textContent += value + '\n';
+    } if (port && writer) {
+    try {
+    await writer.write(data);
+    console.log('Cadena enviada: ', data);
+    } catch (error) {
+    console.error('Error al enviar la cadena: ', error);
     }
-  }
+
+    let elemento = document.getElementById('boton3');
+    if(pull) {
+        elemento.style.backgroundColor = 'blue';
+    }else{
+        elemento.style.backgroundColor = 'rgba(0, 0, 255, 0.500)';
+    }
+    console.log('elemento', elemento)
 
     }
+    
+    
+    }
+        async function readSerial() {
+            while (true) {
+            const { value, done } = await reader.read();
+            if (done) {
+                console.log('Reader cerrado');
+                reader.releaseLock();
+                break;
+            }
+            console.log('Datos recibidos: ', value);
+            //   document.getElementById('output').textContent += value + '\n';
+            }
+        }
