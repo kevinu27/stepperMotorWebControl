@@ -40,10 +40,34 @@ video {
     width: 60%;
     /* height: 25%; */
 }
+.boton4{
+    background-color: rgba(0, 0, 255);
+    color: white;
+    width: 60%;
+    /* height: 25%; */
+    margin: 4%;
+}
+.boton-holder2{
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .boton-holder{
     /* border: 2px solid red; */
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.input{
+    margin: 4%; 
+    margin-left: 2%;
+}
+
+.input-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
