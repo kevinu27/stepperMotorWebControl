@@ -48,8 +48,8 @@ startWebcams();
 
 async function boton1() {
     en = !en
-    console.log('click en el boton 1', "EN", en, "PULL", pull, "DIR", dir)
-    data = `${en},${pull},${dir}\n`;
+    console.log('click en el boton 1', "EN", en, "DIR", dir)
+    data = `${en},${dir}\n`;
     console.log('data', data)
                 
     let elemento = document.getElementById('boton1');
@@ -63,8 +63,8 @@ async function boton1() {
 async function boton2() {
 
     dir= !dir
-    console.log('click en el boton 2', "EN", en, "PULL", pull, "DIR", dir)
-    data = `${en},${pull},${dir}\n`;
+    console.log('click en el boton 2', "EN", en, "DIR", dir)
+    data = `${en},${dir}\n`;
     console.log('data', data)
      
     let elemento = document.getElementById('boton2');
@@ -75,21 +75,7 @@ async function boton2() {
     }
     }
 
-async function boton3() {
-    pull=!pull
-    console.log('click en el boton 3', "EN", en, "PULL", pull, "DIR", dir)
-    data = `${en},${pull},${dir}\n`;
-    console.log('data', data)
 
-    let elemento = document.getElementById('boton3');
-    if(pull) {
-        elemento.style.backgroundColor = 'blue';
-    }else{
-        elemento.style.backgroundColor = 'rgba(0, 0, 255, 0.500)';
-    }
-
-  
-    }
 
         async function readSerial() {
             while (true) {
@@ -108,9 +94,9 @@ async function boton3() {
         async function boton4() {
             console.log('data', data)
             var stepsNumberInput = document.getElementById('Input').value;
-            console.log('stepsNumberInput', stepsNumberInput)
-            console.log('click en el boton 3', "EN", en, "PULL", pull, "DIR", dir, 'stepsNumberInput', stepsNumberInput)
-            data = `${en},${pull},${dir},${stepsNumberInput}\n`;
+            console.log('click en el boton 3', "EN", en, "DIR", dir, 'stepsNumberInput', stepsNumberInput)
+            data = `${en},${dir},${stepsNumberInput}\n`;
+            console.log('data', data)
             
             if (!port) {
                 try {
@@ -137,12 +123,7 @@ async function boton3() {
             console.error('Error al enviar la cadena: ', error);
             }
         
-            let elemento = document.getElementById('boton3');
-            if(pull) {
-                elemento.style.backgroundColor = 'blue';
-            }else{
-                elemento.style.backgroundColor = 'rgba(0, 0, 255, 0.500)';
-            }
+    
         
             }
             }
