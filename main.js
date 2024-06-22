@@ -202,9 +202,11 @@ async function boton2() {
                 if (pins[4].getAttribute('stroke') === "black") {
                     console.log('negro');
                     pins[4].setAttribute('stroke', 'yellow');
+                    pins[5].setAttribute('stroke', 'gold');
                 } else {
                     console.log('yellow');
                     pins[4].setAttribute('stroke', 'black');
+                    pins[5].setAttribute('stroke', 'black');
                 }
         
                 console.log(`Iteración ${i}`);

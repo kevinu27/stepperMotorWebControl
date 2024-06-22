@@ -77,24 +77,43 @@ video {
 }
 
 .driver {
-    /* border: 2px solid red; */
+    border: 2px solid red;
     width: 50%;
+
 }
 
 svg {
-    width: 500px;
+    width: 700px;
     height: 150px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    /* margin-left: 0; */
 }
 
-.nombre{
-    width: 60%;
-    border: 2px solid blue;
+.nombres{
+    width: 100%;
+    /* border: 2px solid blue; */
     /* height: 20px; */
     display: flex;
     margin-bottom: 0px;
     margin-left: 30px;
 }
 p {
-    margin-right: 16px;
+    margin-right: 18px;
+}
+.nombre1{
+display: flex;
+/* border: 2px solid orange; */
+
+}
+
+.nombre2{
+    display: flex;
+    margin-left: 8px;
+    display: flex;
+    /* border: 2px solid green; */
+
+ p{
+/* color: green; */
+margin-right: 25px;
+}
 }
