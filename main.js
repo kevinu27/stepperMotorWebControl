@@ -1,10 +1,34 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+    const changeColorBtn = document.getElementById('changeColorBtn');
+            pins = document.querySelectorAll('#pins line');
+            
+            changeColorBtn.addEventListener('click', () => {
+            //     let delay = 0;
+            //     console.log('pins', pins)
+            //     pins.forEach((pin, index) => {
+            //         setTimeout(() => {
+            //             pin.setAttribute('stroke', getRandomColor());
+            //         }, delay);
+            //         delay += 200; // Increment delay for each pin
+            //     });
+            //     console.log('en el click del boton')
+        loopWithDelay()
+            });
+            function getRandomColor() {
+                return `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
+            }
+
+
+})
+
 var port;
 var writer;
 var pull = 0
 var dir = 0
 var en = 0
 var data = ""
+var pins;   
+var stepsNumberInput;
 
 async function startWebcams() {
     try {
@@ -54,10 +78,15 @@ async function boton1() {
     console.log('data', data)
                 
     let elemento = document.getElementById('boton1');
+    console.log('------------------',  pins[0].getAttribute('stroke'))
     if(en) {
         elemento.style.backgroundColor = 'red';
+        pins[0].setAttribute('stroke', 'yellow');
+        pins[1].setAttribute('stroke', 'gold');
     }else{
         elemento.style.backgroundColor = 'rgba(255, 0, 0, 0.500)';
+        pins[0].setAttribute('stroke', 'black');
+        pins[1].setAttribute('stroke', 'black');
     }
 }
 
@@ -71,8 +100,12 @@ async function boton2() {
     let elemento = document.getElementById('boton2');
     if(dir) {
         elemento.style.backgroundColor = 'green';
+        pins[2].setAttribute('stroke', 'yellow');
+        pins[3].setAttribute('stroke', 'gold');
     }else{
         elemento.style.backgroundColor = 'rgba(0, 128, 0, 0.500)';
+        pins[2].setAttribute('stroke', 'black');
+        pins[3].setAttribute('stroke', 'black');
     }
     }
 
@@ -94,7 +127,7 @@ async function boton2() {
 
         async function boton4() {
             console.log('data', data)
-            var stepsNumberInput = document.getElementById('Input').value;
+            stepsNumberInput = document.getElementById('Input').value;
             console.log('click en el boton 3', "EN", en, "DIR", dir, 'stepsNumberInput', stepsNumberInput)
             data = `${en},${dir},${stepsNumberInput}\n`;
             console.log('data', data)
@@ -118,34 +151,71 @@ async function boton2() {
                 }
             } if (port && writer) {
             try {
-            await writer.write(data);
-            console.log('Cadena enviada: ', data);
-            } catch (error) {
-            console.error('Error al enviar la cadena: ', error);
+                await writer.write(data);
+                    console.log('Cadena enviada: ', data);
+                } catch (error) {
+                    console.error('Error al enviar la cadena: ', error);
+                }
             }
-        
-    
-        
-            }
-            }
+          
+            
+   
+        }
+        // async function loopWithDelay() {
+        //     console.log('  loopWithDelay()')
+        //     console.log('stepsNumberInput', stepsNumberInput)
+        //     let i = 0;
+        //     stepsNumberInput = document.getElementById('Input').value;
+        //     let stepsNumberInputInt = parseInt(stepsNumberInput)
+        //     while (i < stepsNumberInputInt) {
+        //         i++
+        //         if(pins[4].getAttribute('stroke') === "black"){
+        //             console.log('negro')
+        //             pins[2].setAttribute('stroke', 'yellow');
+        //         }else{
+        //             console.log('yellow')
+        //             pins[2].setAttribute('stroke', 'black');
+        //         }
 
-            const changeColorBtn = document.getElementById('changeColorBtn');
-            const pins = document.querySelectorAll('#pins line');
-    
-            changeColorBtn.addEventListener('click', () => {
-                let delay = 0;
-                pins.forEach((pin, index) => {
-                    setTimeout(() => {
-                        pin.setAttribute('stroke', getRandomColor());
-                    }, delay);
-                    delay += 200; // Increment delay for each pin
-                });
-                console.log('en el click del boton')
-            });
-    
-            function getRandomColor() {
-                return `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
-            }
+        //         console.log(`Iteración ${i}`);
 
+        //         // await delay(1000); // Espera 1 segundo
+        //         return new Promise(resolve => setTimeout(resolve, 1000))
+        //     }
+        //     console.log("Bucle completado");
+        // }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
         
-        })
+        async function loopWithDelay() {
+            console.log('loopWithDelay()');
+            let stepsNumberInput = document.getElementById('Input').value;
+            console.log('stepsNumberInput', stepsNumberInput);
+            
+            let stepsNumberInputInt = parseInt(stepsNumberInput);
+            let i = 0;
+        
+            while (i < stepsNumberInputInt) {
+                i++;
+                if (pins[4].getAttribute('stroke') === "black") {
+                    console.log('negro');
+                    pins[4].setAttribute('stroke', 'yellow');
+                } else {
+                    console.log('yellow');
+                    pins[4].setAttribute('stroke', 'black');
+                }
+        
+                console.log(`Iteración ${i}`);
+        
+                // Wait for 1 second
+                await delay(1000);
+            }
+            console.log("Bucle completado");
+        }
+        
+        // Call the async function to start the loop
+        
+        
+      
