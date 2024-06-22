@@ -9,20 +9,45 @@
 </head>
 <body>
     <h1>Webcam Viewer</h1>
-    <video id="webcam1" autoplay playsinline></video>
+    <div class="first-section">
+
+        <video id="webcam1" autoplay playsinline></video>
+        <div class="driver">
+            <svg viewBox="0 0 220 100">
+                <g id="pins">
+                    <line x1="10" y1="0" x2="10" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="30" y1="0" x2="30" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="50" y1="0" x2="50" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="70" y1="0" x2="70" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="90" y1="0" x2="90" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="110" y1="0" x2="110" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="130" y1="0" x2="130" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="150" y1="0" x2="150" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="170" y1="0" x2="170" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="190" y1="0" x2="190" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="210" y1="0" x2="210" y2="50" stroke="black" stroke-width="2" />
+                </g>
+                <rect x="0" y="50" width="220" height="50" fill="none" stroke="black" stroke-width="2" />
+            </svg>
+            <br>
+            <button id="changeColorBtn">Change Colors</button>
+        </div>
+    </div>
     <!-- <video id="webcam2" autoplay playsinline></video> -->
      <div class="botones">
         <div class="boton-holder">
             <button onclick="boton1()" class="boton boton1" id="boton1">EN</button>
-        </div>          
+        </div>        
+        <div class="input-holder">
+            <label for="">Steps</label>
+            <input type="text" id="Input" class="input" placeholder="">
+        </div>  
         <div class="boton-holder">
             <button onclick="boton2()" class="boton boton2"  id="boton2">DIR</button>
         </div>
+
      </div>
-     <div class="input-holder">
-         <label for="">Steps</label>
-         <input type="text" id="Input" class="input" placeholder="">
-     </div>
+
      <div class="boton-holder2">
         <button onclick="boton4()" class="boton boton4" id="boton4">enviar</button>
     </div>    

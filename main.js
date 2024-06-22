@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', (event) => {
 var port;
 var writer;
 var pull = 0
@@ -128,4 +129,23 @@ async function boton2() {
             }
             }
 
+            const changeColorBtn = document.getElementById('changeColorBtn');
+            const pins = document.querySelectorAll('#pins line');
+    
+            changeColorBtn.addEventListener('click', () => {
+                let delay = 0;
+                pins.forEach((pin, index) => {
+                    setTimeout(() => {
+                        pin.setAttribute('stroke', getRandomColor());
+                    }, delay);
+                    delay += 200; // Increment delay for each pin
+                });
+                console.log('en el click del boton')
+            });
+    
+            function getRandomColor() {
+                return `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
+            }
+
         
+        })

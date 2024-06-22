@@ -65,10 +65,10 @@ void loop() {
         Serial.println("wWH");
         while(currentSteps < var4Int){
           currentSteps = currentSteps +1;
-          digitalWrite(2, LOW);
-          delay(1000);
           digitalWrite(2, HIGH);
-          delay(1000);
+          delay(1);
+          digitalWrite(2, LOW);
+          delay(1);
           }
         
       } else {
