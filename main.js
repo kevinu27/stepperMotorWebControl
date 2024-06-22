@@ -190,34 +190,43 @@ async function boton2() {
         }
         
         async function loopWithDelay() {
-            console.log('loopWithDelay()');
             let stepsNumberInput = document.getElementById('Input').value;
-            console.log('stepsNumberInput', stepsNumberInput);
             
             let stepsNumberInputInt = parseInt(stepsNumberInput);
             let i = 0;
-        
+            let a = true;
             while (i < stepsNumberInputInt) {
                 i++;
                 if (pins[4].getAttribute('stroke') === "black") {
                     console.log('negro');
                     pins[4].setAttribute('stroke', 'yellow');
                     pins[5].setAttribute('stroke', 'gold');
+                    if (a) {
+                        pins[6].setAttribute('stroke', 'yellow');
+                        pins[7].setAttribute('stroke', 'gold');
+                        a = false
+                    } else {
+                        pins[8].setAttribute('stroke', 'yellow');
+                        pins[9].setAttribute('stroke', 'gold');  
+                        a= true                      
+                    }             
                 } else {
                     console.log('yellow');
                     pins[4].setAttribute('stroke', 'black');
                     pins[5].setAttribute('stroke', 'black');
+                    pins[6].setAttribute('stroke', 'black');
+                    pins[7].setAttribute('stroke', 'black'); 
+                    pins[8].setAttribute('stroke', 'black');
+                    pins[9].setAttribute('stroke', 'black');          
                 }
         
                 console.log(`Iteración ${i}`);
         
-                // Wait for 1 second
-                await delay(1000);
+                await delay(500);
             }
             console.log("Bucle completado");
         }
         
-        // Call the async function to start the loop
         
         
       
