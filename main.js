@@ -153,6 +153,7 @@ async function boton2() {
             try {
                 await writer.write(data);
                     console.log('Cadena enviada: ', data);
+                    loopWithDelay()
                 } catch (error) {
                     console.error('Error al enviar la cadena: ', error);
                 }
@@ -161,29 +162,7 @@ async function boton2() {
             
    
         }
-        // async function loopWithDelay() {
-        //     console.log('  loopWithDelay()')
-        //     console.log('stepsNumberInput', stepsNumberInput)
-        //     let i = 0;
-        //     stepsNumberInput = document.getElementById('Input').value;
-        //     let stepsNumberInputInt = parseInt(stepsNumberInput)
-        //     while (i < stepsNumberInputInt) {
-        //         i++
-        //         if(pins[4].getAttribute('stroke') === "black"){
-        //             console.log('negro')
-        //             pins[2].setAttribute('stroke', 'yellow');
-        //         }else{
-        //             console.log('yellow')
-        //             pins[2].setAttribute('stroke', 'black');
-        //         }
 
-        //         console.log(`Iteración ${i}`);
-
-        //         // await delay(1000); // Espera 1 segundo
-        //         return new Promise(resolve => setTimeout(resolve, 1000))
-        //     }
-        //     console.log("Bucle completado");
-        // }
 
         function delay(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -222,7 +201,7 @@ async function boton2() {
         
                 console.log(`Iteración ${i}`);
         
-                await delay(500);
+                await delay(1);
             }
             console.log("Bucle completado");
         }
